@@ -12,5 +12,7 @@ def decrease_stock(stock, qty):
 
 
 def restock(stock, qty, limit=100):
-    """재고를 채우되 limit을 넘지 않게 한다."""
+    """재고를 채우되 limit을 넘지 않게 한다. 넘친 만큼은 버린다."""
+    if qty < 0:
+        raise ValueError("입고 수량은 0 이상이어야 합니다")
     return min(stock + qty, limit)
